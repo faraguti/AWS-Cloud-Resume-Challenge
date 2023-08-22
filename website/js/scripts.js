@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', event => {
 // JavaScript Counter
 const counter = document.querySelector(".counter-number");
 async function updateCounter() {
-    let response = await fetch("https://dwihd2dagwqdtk6o7jbjjhlgqm0ynvst.lambda-url.us-west-2.on.aws/");
+    let response = await fetch("https://4dee54o3gpwzo25jxjd6ojofsa0qeboe.lambda-url.us-west-2.on.aws/");
     let data = await response.json();
     counter.innerHTML = `${data}`;
 }
