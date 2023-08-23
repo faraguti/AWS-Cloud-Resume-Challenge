@@ -44,15 +44,15 @@ window.addEventListener('DOMContentLoaded', event => {
 // updateCounter();
 
 
+// JavaScript Counter
 const counter = document.querySelector(".counter-number");
-
 async function updateCounter() {
     try {
         const response = await fetch("https://o34ezkdwsb.execute-api.us-west-2.amazonaws.com/cloud-resume-challenge-function");
 
         if (response.ok) {
             const data = await response.json();
-            counter.innerHTML = `${data.visits}`;
+            counter.innerHTML = `${data}`;
         } else {
             console.error("Failed to update counter:", response.statusText);
         }
