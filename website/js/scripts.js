@@ -33,34 +33,32 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 
-// JavaScript Counter
-const counter = document.querySelector(".counter-number");
-async function updateCounter() {
-    let response = await fetch("https://o34ezkdwsb.execute-api.us-west-2.amazonaws.com/cloud-resume-challenge-function");
-    let data = await response.json();
-    counter.innerHTML = `${data}`;
-}
-
-updateCounter();
-
-
+// // JavaScript Counter
 // const counter = document.querySelector(".counter-number");
-
 // async function updateCounter() {
-//     try {
-//         const response = await fetch("https://o34ezkdwsb.execute-api.us-west-2.amazonaws.com/cloud-resume-challenge-function", {
-//             method: "POST"
-//         });
-
-//         if (response.ok) {
-//             const data = await response.json();
-//             counter.innerHTML = `${data.visits}`;
-//         } else {
-//             console.error("Failed to update counter:", response.statusText);
-//         }
-//     } catch (error) {
-//         console.error("An error occurred:", error);
-//     }
+//     let response = await fetch("https://o34ezkdwsb.execute-api.us-west-2.amazonaws.com/cloud-resume-challenge-function");
+//     let data = await response.json();
+//     counter.innerHTML = `${data}`;
 // }
 
 // updateCounter();
+
+
+const counter = document.querySelector(".counter-number");
+
+async function updateCounter() {
+    try {
+        const response = await fetch("https://o34ezkdwsb.execute-api.us-west-2.amazonaws.com/cloud-resume-challenge-function");
+
+        if (response.ok) {
+            const data = await response.json();
+            counter.innerHTML = `${data.visits}`;
+        } else {
+            console.error("Failed to update counter:", response.statusText);
+        }
+    } catch (error) {
+        console.error("An error occurred:", error);
+    }
+}
+
+updateCounter();
