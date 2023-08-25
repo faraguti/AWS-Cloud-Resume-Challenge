@@ -6,10 +6,8 @@ This repository contains the code and resources for my personal AWS Cloud Resume
 
 - [About the Challenge](#about-the-challenge)
 - [Architecture](#architecture)
-- [Features](#features)
-- [Getting Started](#getting-started)
+- [Services Used](#services-used)
 - [Repository Structure](#repository-structure)
-- [Deployment Steps](#deployment-steps)
 - [Resources and Documentation](#resources-and-documentation)
 - [Contributing](#contributing)
 - [License](#license)
@@ -24,36 +22,23 @@ This repository contains the code and resources for my personal AWS Cloud Resume
 
 ![cloud-resume-challenge](https://github.com/faraguti/AWS-Cloud-Resume-Challenge/assets/5418256/d0a333c9-6fd3-46a1-8ca8-6908afe7a6d9)
 
+## Services Used
 
-## Features
-
-- Serverless architecture using AWS Lambda and API Gateway.
-- Data storage and retrieval using Amazon DynamoDB.
-- CORS configuration for cross-origin requests.
-- CloudWatch Logs for monitoring and debugging.
-- AWS Identity and Access Management (IAM) roles for secure permissions.
-
-## Getting Started
-
-To get started with the Cloud Resume Challenge:
-
-1. Clone this repository to your local machine.
-2. Review and deploy the Terraform configuration to create the necessary AWS resources.
-3. Deploy the serverless application using the provided Python Lambda function and API Gateway configuration.
-4. Access the deployed application URL to interact with the visit counter.
+- S3
+- CloudFront
+- Certificate Manager
+- DynamoDB
+- Lambda
+- API Gateway
+- Github Actions
+- Terraform
 
 ## Repository Structure
 
 - `terraform/`: Contains Terraform configuration files for provisioning AWS resources.
 - `lambda/`: Contains the Python code for the AWS Lambda function.
+- `website/`: Contains the HTML, CSS, and JavaScript files for the Cloud Resume website.
 - `README.md`: Detailed information about the project, setup, and usage.
-
-## Deployment Steps
-
-1. Update the Terraform configuration in the `terraform/` directory to match your environment and preferences.
-2. Deploy the Terraform stack to create AWS resources.
-3. Deploy the Lambda function and API Gateway using the provided configuration and code.
-4. Access the application URL to view and interact with the visit counter.
 
 ## Resources and Documentation
 
@@ -61,6 +46,11 @@ To get started with the Cloud Resume Challenge:
 - [AWS Lambda Documentation](https://aws.amazon.com/lambda/)
 - [Amazon API Gateway Documentation](https://aws.amazon.com/api-gateway/)
 - [Amazon DynamoDB Documentation](https://aws.amazon.com/dynamodb/)
+- [Amazon S3 Documentation](https://aws.amazon.com/s3/)
+- [Amazon CloudFront Documentation](https://aws.amazon.com/cloudfront/)
+- [AWS Certificate Manager Documentation](https://aws.amazon.com/certificate-manager/)
+- [GitHub Actions Documentation](https://docs.github.com/en/actions)
+- [Terraform Documentation](https://www.terraform.io/docs/index.html)
 
 ## Contributing
 
