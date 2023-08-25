@@ -35,8 +35,8 @@ This repository contains the code and resources for my personal AWS Cloud Resume
 
 ## Repository Structure
 
+- `lambda-function/`: Contains the Python code for the AWS Lambda function.
 - `terraform/`: Contains Terraform configuration files for provisioning AWS resources.
-- `lambda/`: Contains the Python code for the AWS Lambda function.
 - `website/`: Contains the HTML, CSS, and JavaScript files for the Cloud Resume website.
 - `README.md`: Detailed information about the project, setup, and usage.
 
