@@ -5,6 +5,7 @@ This repository contains the code and resources for my personal AWS Cloud Resume
 ## Table of Contents
 
 - [About the Challenge](#about-the-challenge)
+- [Architecture](#architecture)
 - [Features](#features)
 - [Getting Started](#getting-started)
 - [Repository Structure](#repository-structure)
@@ -15,9 +16,14 @@ This repository contains the code and resources for my personal AWS Cloud Resume
 
 ## About the Challenge
 
-[The Cloud Resume Challenge](https://cloudresumechallenge.dev/)
+**Official Website**: [The Cloud Resume Challenge](https://cloudresumechallenge.dev/)
 
 **Resume Website**: [resume.faraguti.cloud](https://resume.faraguti.cloud)
+
+## Architecture
+
+![cloud-resume-challenge](https://github.com/faraguti/AWS-Cloud-Resume-Challenge/assets/5418256/d0a333c9-6fd3-46a1-8ca8-6908afe7a6d9)
+
 
 ## Features
 
