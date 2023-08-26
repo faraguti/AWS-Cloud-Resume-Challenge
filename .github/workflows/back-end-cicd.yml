@@ -46,9 +46,5 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name: Set AWS region for deployment
-        run: |
-          echo "AWS_REGION=$AWS_REGION" >> $GITHUB_ENV
-
       - name: Terraform Apply
-        run: terraform apply --auto-approve
+        run: terraform apply --auto-approve -debug
