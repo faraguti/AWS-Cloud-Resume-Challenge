@@ -40,8 +40,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@main
 
+      - name: Print Working Directory
+        run: pwd
+
+      - name: List files
+        run: ls
+
       - name: Navigate to the Terraform directory
         run: cd terraform
+
+      - name: Print Working Directory
+        run: pwd
+
+      - name: List files
+        run: ls
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
