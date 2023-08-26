@@ -25,7 +25,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run tests
-        run: python run_tests.py
+        run: python lambda-function\test_visit_counter.py
 
   deploy:
     name: Deploy to AWS
