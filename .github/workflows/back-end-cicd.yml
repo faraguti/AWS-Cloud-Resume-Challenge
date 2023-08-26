@@ -29,6 +29,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Set AWS region for testing
+        run: |
+          echo "AWS_REGION=$AWS_REGION" >> $GITHUB_ENV
+
       - name: Run tests
         run: python lambda-function/test_visit_counter.py
 
@@ -47,13 +51,9 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name: Terraform Apply
-        run: terraform apply --auto-approve
-      
       - name: Set AWS region for deployment
         run: |
           echo "AWS_REGION=$AWS_REGION" >> $GITHUB_ENV
-    
-        
-            
-            
+
+      - name: Terraform Apply
+        run: terraform apply --auto-approve
