@@ -1,7 +1,7 @@
 import json
 import boto3
 
-dynamodb = boto3.resource('dynamodb')
+dynamodb = boto3.resource('dynamodb', region_name='us-west-2')
 table = dynamodb.Table('cloud-resume-challenge')
 
 def lambda_handler(event, context):
