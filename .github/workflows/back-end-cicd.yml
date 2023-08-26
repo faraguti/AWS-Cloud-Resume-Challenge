@@ -23,15 +23,15 @@ jobs:
         uses: actions/setup-python@main
         with:
           python-version: 3.x
+    
+      - name: Set AWS region for testing
+        run: |
+          echo "AWS_REGION=$AWS_REGION" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: Set AWS region for testing
-        run: |
-          echo "AWS_REGION=$AWS_REGION" >> $GITHUB_ENV
 
       - name: Run tests
         run: python lambda-function/test_visit_counter.py
