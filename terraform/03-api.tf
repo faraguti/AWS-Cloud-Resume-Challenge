@@ -30,7 +30,7 @@ resource "aws_apigatewayv2_integration" "lambda_function_integration" {
 # Define a route in the API to connect to the Lambda integration
 resource "aws_apigatewayv2_route" "api_route" {
   api_id    = aws_apigatewayv2_api.api_gateway_cloud_resume.id
-  route_key = "GET /cloud-resume-function"
+  route_key = "GET /cloud-resume-function2"
 
   target = "integrations/${aws_apigatewayv2_integration.lambda_function_integration.id}"
 }
@@ -42,7 +42,7 @@ resource "aws_lambda_permission" "api_lambda_permission" {
   function_name = aws_lambda_function.cloud_resume_function.function_name
   principal     = "apigateway.amazonaws.com"
 
-  source_arn = "${aws_apigatewayv2_api.api_gateway_cloud_resume.execution_arn}/*/*/cloud-resume-function"
+  source_arn = "${aws_apigatewayv2_api.api_gateway_cloud_resume.execution_arn}/*/*/cloud-resume-function2"
 }
 
 # Define a CloudWatch Log Group for API Gateway logs

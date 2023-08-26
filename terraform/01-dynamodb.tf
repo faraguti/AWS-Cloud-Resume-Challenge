@@ -2,7 +2,7 @@
 
 # Define a DynamoDB table for storing data
 resource "aws_dynamodb_table" "dynamodb_table_cloud_resume" {
-  name         = "cloud-resume-challenge"  # Unique name for the table
+  name         = "cloud-resume-challenge2"  # Unique name for the table
   billing_mode = "PAY_PER_REQUEST"  # Pay-per-request billing mode
 
   # Define the hash key attribute

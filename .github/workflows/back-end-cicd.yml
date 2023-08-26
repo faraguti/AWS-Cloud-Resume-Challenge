@@ -11,7 +11,7 @@ env:
 
 jobs:
   test:
-    name: Run Tests
+    name: Unit-Test-Backend
     runs-on: ubuntu-latest
 
     steps:
@@ -32,7 +32,7 @@ jobs:
         run: python lambda-function/test_visit_counter.py
 
   deploy:
-    name: Deploy to AWS
+    name: Deploy-to-AWS
     runs-on: ubuntu-latest
     needs: test  # Wait for the 'test' job to complete
 
@@ -42,9 +42,12 @@ jobs:
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
+    
+      - name: Navigate to the Terraform directory
+        run: cd terraform
 
       - name: Terraform Init
         run: terraform init
 
       - name: Terraform Apply
-        run: terraform apply --auto-approve -debug
+        run: terraform apply --auto-approve
