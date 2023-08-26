@@ -5,6 +5,7 @@ from colorama import init, Fore
 
 init(autoreset=True)  # Initialize colorama
 
+# Define a test class for Lambda function
 class TestLambdaFunction(unittest.TestCase):
     @patch('boto3.resource')
     def test_lambda_handler(self, mock_boto3):
@@ -31,6 +32,6 @@ class TestLambdaFunction(unittest.TestCase):
         else:
             print(Fore.RED + f"❌ Test Failed: The counter started at {initial_visits}, but was not updated correctly")
 
-
+# Run the tests if this script is the main module
 if __name__ == '__main__':
     unittest.main()
