@@ -36,6 +36,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: test  # Wait for the 'test' job to complete
 
+    env:
+      SOURCE_DIR: 'terraform'
+
     steps:
       - name: Checkout code
         uses: actions/checkout@main
@@ -45,9 +48,6 @@ jobs:
 
       - name: List files
         run: ls
-
-      - name: Navigate to the Terraform directory
-        run: cd terraform
 
       - name: Print Working Directory
         run: pwd
