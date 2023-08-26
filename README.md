@@ -27,6 +27,7 @@ This repository contains the code and resources for my personal AWS Cloud Resume
 - S3
 - CloudFront
 - Certificate Manager
+- Route 53
 - DynamoDB
 - Lambda
 - API Gateway
