@@ -11,7 +11,7 @@ class TestLambdaFunction(unittest.TestCase):
         # Mock DynamoDB responses
         mock_response = {
             'Item': {
-                'id': '1',
+                'Id': '1',
                 'visits': 0  # Initial value doesn't matter, as it will be replaced
             }
         }
