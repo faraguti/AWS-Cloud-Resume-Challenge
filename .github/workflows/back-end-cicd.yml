@@ -40,12 +40,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@main
 
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v2
-    
       - name: Navigate to the Terraform directory
         run: cd terraform
 
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+    
       - name: Terraform Init
         run: terraform init
 
