@@ -6,7 +6,7 @@ import boto3
 dynamodb = boto3.resource('dynamodb', region_name='us-west-2')
 
 # Specify the DynamoDB table to work with
-table = dynamodb.Table('cloud-resume-challenge2')
+table = dynamodb.Table('cloud-resume-challenge')
 
 # Lambda function entry point
 def lambda_handler(event, context):

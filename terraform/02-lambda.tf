@@ -40,7 +40,7 @@ data "archive_file" "lambda" {
 # Define the Lambda function
 resource "aws_lambda_function" "cloud_resume_function" {
   filename      = "../${path.module}/lambda-function/visit_counter.zip"  # Lambda deployment package
-  function_name = "cloud-resume-function2"
+  function_name = "cloud-resume-function"
   role          = aws_iam_role.lambda_exec.arn  # IAM role for execution
   handler       = "visit_counter.lambda_handler"  # Lambda handler function
 

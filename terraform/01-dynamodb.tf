@@ -1,6 +1,6 @@
 # Define a DynamoDB table for storing data
 resource "aws_dynamodb_table" "dynamodb_table_cloud_resume" {
-  name         = "cloud-resume-challenge2"
+  name         = "cloud-resume-challenge"
   billing_mode = "PAY_PER_REQUEST"
 
   attribute {
