@@ -22,6 +22,7 @@ resource "aws_dynamodb_table" "dynamodb_table_cloud_resume" {
 
 # Define an item to be stored in the DynamoDB table
 resource "aws_dynamodb_table_item" "dynamodb-item-visits" {
+  count = var.first_deploy ? 1 : 0  # Conditionally create or skip the resource
   table_name = aws_dynamodb_table.dynamodb_table_cloud_resume.name
   hash_key   = aws_dynamodb_table.dynamodb_table_cloud_resume.hash_key
 
