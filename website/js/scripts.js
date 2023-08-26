@@ -48,7 +48,7 @@ window.addEventListener('DOMContentLoaded', event => {
 const counter = document.querySelector(".counter-number");
 async function updateCounter() {
     try {
-        const response = await fetch("https://o34ezkdwsb.execute-api.us-west-2.amazonaws.com/cloud-resume-challenge-function");
+        const response = await fetch("https://ck0oj70heh.execute-api.us-west-2.amazonaws.com/cloud-resume-function");
 
         if (response.ok) {
             const data = await response.json();
