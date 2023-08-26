@@ -11,8 +11,9 @@ class TestLambdaFunction(unittest.TestCase):
         # Mock DynamoDB responses
         mock_response = {
             'Item': {
-                'Id': '1',
-                'visits': 0  # Initial value doesn't matter, as it will be replaced
+                'pk': '1',
+                'sk': '1',
+                'visits': '0'  # Initial value doesn't matter, as it will be replaced
             }
         }
         mock_table = mock_boto3.return_value.Table.return_value
@@ -25,7 +26,7 @@ class TestLambdaFunction(unittest.TestCase):
         updated_visits = visit_counter.lambda_handler({}, {})
 
         # Verify the result and interactions
-        if updated_visits == initial_visits + 1:
+        if int(updated_visits) == int(initial_visits) + 1:
             print(Fore.GREEN + f"🎉 Test Passed: The counter started at {initial_visits} and was updated correctly to {updated_visits}!")
         else:
             print(Fore.RED + f"❌ Test Failed: The counter started at {initial_visits}, but was not updated correctly")

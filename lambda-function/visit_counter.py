@@ -10,25 +10,15 @@ table = dynamodb.Table('cloud-resume-challenge2')
 
 # Lambda function entry point
 def lambda_handler(event, context):
-    # Retrieve item from DynamoDB using the 'Id' key
-    response = table.get_item(Key={
-        'Id': '1'
-    })
+    # Retrieve items from DynamoDB using the GSI 'visit_count_index'
+    response = table.get_item(
+        Key={"pk" : "1", "sk": "1"})
+        
+    item = response.get("Item", {})
+    visits = item.get("visits", 0)
     
-    # Extract the 'visits' attribute from the response
-    visits = response['Item']['visits']
-    
-    # Increment the 'visits' count
     visits = visits + 1
     
-    # Print the updated 'visits' count (for Lambda logs)
-    print(visits)
+    table.put_item(Item={"pk": "1", "sk": "1", "visits": visits})
     
-    # Update the 'visits' attribute in the DynamoDB item
-    response = table.put_item(Item={
-        'Id': '1',
-        'visits': visits
-    })
-    
-    # Return the updated 'visits' count as the Lambda response
     return visits
