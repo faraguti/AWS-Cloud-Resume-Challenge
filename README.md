@@ -20,7 +20,7 @@ This repository contains the code and resources for my personal AWS Cloud Resume
 
 ## Architecture
 
-![cloud-resume-challenge](https://github.com/faraguti/AWS-Cloud-Resume-Challenge/assets/5418256/d0a333c9-6fd3-46a1-8ca8-6908afe7a6d9)
+![cloud-resume-challenge](https://github.com/faraguti/AWS-Cloud-Resume-Challenge/assets/5418256/5674900e-c499-4223-be20-fd219b8ed815)
 
 ## Services Used
 
