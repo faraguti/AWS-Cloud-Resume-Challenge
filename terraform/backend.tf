@@ -3,7 +3,7 @@ terraform {
   backend "s3" {
     bucket = "terraform-state-cloud-resume-faraguti"
     key = "global/s3/terraform.tfstate"
-    dynamodb_table = "terraform-state"
+    dynamodb_table = "terraform-state-cloud-resume-faraguti"
     region = "us-west-2"
     encrypt = true
     
