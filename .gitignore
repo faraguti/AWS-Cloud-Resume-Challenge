@@ -34,3 +34,4 @@ override.tf.json
 terraform.rc
 
 terraform/S3-Bucket-State
+terraform/backend.tf
