@@ -6,7 +6,7 @@ resource "aws_apigatewayv2_api" "api_gateway_cloud_resume" {
   protocol_type = "HTTP"
 
   cors_configuration {
-    allow_origins = ["https://resume.faraguti.cloud", "https://resume.faraguti.com", "https://faraguti.com/"]
+    allow_origins = ["https://resume.faraguti.cloud", "https://resume.faraguti.com", "https://faraguti.com"]
   }
 
   # Specify dependency on the Lambda function
