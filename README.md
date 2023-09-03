@@ -10,7 +10,6 @@ This repository contains the code and resources for my personal AWS Cloud Resume
 - [Repository Structure](#repository-structure)
 - [Resources and Documentation](#resources-and-documentation)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## About the Challenge
 
@@ -56,10 +55,6 @@ This repository contains the code and resources for my personal AWS Cloud Resume
 ## Contributing
 
 Contributions are welcome! If you find any issues or have improvements to suggest, feel free to open a GitHub issue or submit a pull request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ---
 
