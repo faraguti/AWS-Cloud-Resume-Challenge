@@ -33,16 +33,16 @@ resource "aws_iam_role_policy_attachment" "lambda_policy_dynamodb_full_access" {
 # Create a Lambda deployment package from source code
 data "archive_file" "lambda" {
   type        = "zip"
-  source_dir = "../${path.module}/lambda-function"  # Specify the source code dir
+  source_dir  = "../${path.module}/lambda-function" # Specify the source code dir
   output_path = "../${path.module}/lambda-function/visit_counter.zip"
 }
 
 # Define the Lambda function
 resource "aws_lambda_function" "cloud_resume_function" {
-  filename      = "../${path.module}/lambda-function/visit_counter.zip"  # Lambda deployment package
+  filename      = "../${path.module}/lambda-function/visit_counter.zip" # Lambda deployment package
   function_name = "cloud-resume-function"
-  role          = aws_iam_role.lambda_exec.arn  # IAM role for execution
-  handler       = "visit_counter.lambda_handler"  # Lambda handler function
+  role          = aws_iam_role.lambda_exec.arn   # IAM role for execution
+  handler       = "visit_counter.lambda_handler" # Lambda handler function
 
   source_code_hash = data.archive_file.lambda.output_base64sha256
 

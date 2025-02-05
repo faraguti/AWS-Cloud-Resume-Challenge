@@ -10,7 +10,7 @@ resource "aws_apigatewayv2_api" "api_gateway_cloud_resume" {
   }
 
   # Specify dependency on the Lambda function
-  depends_on = [ aws_lambda_function.cloud_resume_function ]
+  depends_on = [aws_lambda_function.cloud_resume_function]
 }
 
 # Configure an integration with AWS Lambda for the API
@@ -18,13 +18,13 @@ resource "aws_apigatewayv2_integration" "lambda_function_integration" {
   api_id           = aws_apigatewayv2_api.api_gateway_cloud_resume.id
   integration_type = "AWS_PROXY"
 
-  connection_type     = "INTERNET"
-  description         = "Lambda function integration"
+  connection_type    = "INTERNET"
+  description        = "Lambda function integration"
   integration_method = "POST"
   integration_uri    = aws_lambda_function.cloud_resume_function.invoke_arn
 
-  passthrough_behavior     = "WHEN_NO_MATCH"
-  payload_format_version   = "2.0"
+  passthrough_behavior   = "WHEN_NO_MATCH"
+  payload_format_version = "2.0"
 }
 
 # Define a route in the API to connect to the Lambda integration

@@ -20,11 +20,11 @@ resource "aws_dynamodb_table" "dynamodb_table_cloud_resume" {
     name = "visits"
     type = "N"
   }
-  
+
   # Set primary key and range key
   hash_key  = "pk"
   range_key = "sk"
-  
+
   # Define global secondary index for 'visits' attribute
   global_secondary_index {
     name            = "visit_count_index"
