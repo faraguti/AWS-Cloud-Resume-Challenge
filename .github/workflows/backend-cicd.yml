@@ -72,6 +72,10 @@ jobs:
     # Deploy only from main, never from pull requests
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
+    permissions:
+      contents: read
+      id-token: write # lets the job request a GitHub OIDC token for AWS
+
     env:
       TERRAFORM_BACKEND_BUCKET: ${{ secrets.TERRAFORM_BACKEND_BUCKET }}
       TERRAFORM_BACKEND_KEY: global/s3/terraform.tfstate
@@ -86,13 +90,13 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v7
 
-      # To drop the long-lived keys, switch to GitHub OIDC: replace the two
-      # key inputs with role-to-assume and add "id-token: write" permission.
+      # Short-lived credentials via GitHub OIDC; no stored AWS keys. The role
+      # only trusts this repo's main branch (see iam/github-oidc/).
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v6
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          role-to-assume: arn:aws:iam::287053549850:role/github-actions-resume-backend
+          role-session-name: backend-deploy-${{ github.run_id }}
           aws-region: us-west-2
 
       - name: Create backend.tf
