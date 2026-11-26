@@ -19,8 +19,10 @@ jobs:
 
     env:
       AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-      # Optional: set this secret to clear the CloudFront cache after each deploy
-      CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}
+      # CloudFront caches the site (Managed-CachingOptimized), so every deploy
+      # must invalidate it. The distribution ID is not a secret; the secret, if
+      # set, still takes precedence.
+      CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID || 'E1MGI1EPH0TGKV' }}
 
     steps:
       - name: Checkout Code
@@ -35,8 +37,17 @@ jobs:
           role-session-name: frontend-deploy-${{ github.run_id }}
           aws-region: us-west-2
 
+      # Cache-Control: CloudFront keeps everything for a day (s-maxage) and is
+      # invalidated on deploy. Browsers revalidate pages on every visit and keep
+      # CSS/JS/images for an hour, so updates show up quickly for returning visitors.
       - name: Sync website to S3
-        run: aws s3 sync website "s3://$AWS_S3_BUCKET" --delete
+        run: |
+          aws s3 sync website "s3://$AWS_S3_BUCKET" --delete \
+            --exclude "*.html" --exclude "*.xml" --exclude "*.txt" \
+            --cache-control "public, max-age=3600, s-maxage=86400"
+          aws s3 sync website "s3://$AWS_S3_BUCKET" --delete \
+            --exclude "*" --include "*.html" --include "*.xml" --include "*.txt" \
+            --cache-control "public, max-age=0, must-revalidate, s-maxage=86400"
 
       - name: Invalidate CloudFront cache
         if: env.CLOUDFRONT_DISTRIBUTION_ID != ''
