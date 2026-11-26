@@ -1,3 +1,4 @@
+import importlib
 import json
 import os
 import sys
@@ -55,6 +56,28 @@ class TestVisitCounter(unittest.TestCase):
 
         self.mock_boto3.resource.assert_called_once_with("dynamodb", region_name=visit_counter.REGION)
         self.mock_boto3.resource.return_value.Table.assert_called_once_with(visit_counter.TABLE_NAME)
+
+
+class TestImportTimeInit(unittest.TestCase):
+    """Inside Lambda the table must be built at import (init phase), not per request."""
+
+    def tearDown(self):
+        # patch.dict has restored the environment; reload so the module is lazy again.
+        importlib.reload(visit_counter)
+
+    def test_builds_table_at_import_inside_lambda(self):
+        with patch.dict(os.environ, {"AWS_LAMBDA_FUNCTION_NAME": "cloud-resume-function"}), \
+                patch("boto3.resource") as mock_resource:
+            importlib.reload(visit_counter)
+            mock_resource.assert_called_once()
+            self.assertIs(visit_counter._table, mock_resource.return_value.Table.return_value)
+
+    def test_stays_lazy_outside_lambda(self):
+        with patch.dict(os.environ, {}, clear=False), patch("boto3.resource") as mock_resource:
+            os.environ.pop("AWS_LAMBDA_FUNCTION_NAME", None)
+            importlib.reload(visit_counter)
+            mock_resource.assert_not_called()
+            self.assertIsNone(visit_counter._table)
 
 
 if __name__ == "__main__":
