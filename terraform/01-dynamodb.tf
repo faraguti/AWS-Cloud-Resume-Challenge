@@ -1,11 +1,15 @@
 # Terraform Configuration for DynamoDB
 
-# Define a DynamoDB table for storing data
+# Define a DynamoDB table for storing the visit counter
 resource "aws_dynamodb_table" "dynamodb_table_cloud_resume" {
   name         = "cloud-resume-challenge"
   billing_mode = "PAY_PER_REQUEST"
 
-  # Define primary key attributes
+  # Composite primary key. Only key attributes are declared here;
+  # "visits" is a regular attribute and does not need a definition.
+  hash_key  = "pk"
+  range_key = "sk"
+
   attribute {
     name = "pk"
     type = "S"
@@ -16,21 +20,10 @@ resource "aws_dynamodb_table" "dynamodb_table_cloud_resume" {
     type = "S"
   }
 
-  attribute {
-    name = "visits"
-    type = "N"
-  }
-
-  # Set primary key and range key
-  hash_key  = "pk"
-  range_key = "sk"
-
-  # Define global secondary index for 'visits' attribute
-  global_secondary_index {
-    name            = "visit_count_index"
-    hash_key        = "visits"
-    range_key       = "sk"
-    projection_type = "ALL"
+  # The table holds the live visit count: fail the plan rather than
+  # replace or delete it by accident.
+  lifecycle {
+    prevent_destroy = true
   }
 
   # Define tags for the DynamoDB table

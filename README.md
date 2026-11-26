@@ -1,6 +1,6 @@
 # AWS Cloud Resume Challenge - Faraguti
 
-This repository contains the code and resources for my personal AWS Cloud Resume Challenge. The Cloud Resume Challenge is a fun and hands-on way to demonstrate your AWS skills by building and deploying a serverless web application. I am still working on it!
+This repository contains the code and resources for my personal AWS Cloud Resume Challenge. The Cloud Resume Challenge is a fun and hands-on way to demonstrate your AWS skills by building and deploying a serverless web application.
 
 ## Table of Contents
 
@@ -8,6 +8,7 @@ This repository contains the code and resources for my personal AWS Cloud Resume
 - [Architecture](#architecture)
 - [Services Used](#services-used)
 - [Repository Structure](#repository-structure)
+- [Running the Tests](#running-the-tests)
 - [Resources and Documentation](#resources-and-documentation)
 - [Contributing](#contributing)
 
@@ -15,7 +16,7 @@ This repository contains the code and resources for my personal AWS Cloud Resume
 
 **Official Website**: [The Cloud Resume Challenge](https://cloudresumechallenge.dev/)
 
-**Resume Website**: [resume.faraguti.cloud](https://resume.faraguti.cloud)
+**Resume Website**: [faraguti.com](https://faraguti.com)
 
 ## Architecture
 
@@ -36,9 +37,19 @@ This repository contains the code and resources for my personal AWS Cloud Resume
 ## Repository Structure
 
 - `lambda-function/`: Contains the Python code for the AWS Lambda function.
-- `terraform/`: Contains Terraform configuration files for provisioning AWS resources.
+- `terraform/`: Terraform for the backend (DynamoDB, Lambda, API Gateway). The S3, CloudFront, Certificate Manager and Route 53 hosting is managed outside this repository.
 - `website/`: Contains the HTML, CSS, and JavaScript files for the Cloud Resume website.
 - `README.md`: Detailed information about the project, setup, and usage.
+- `.github/workflows/`: CI/CD. Backend changes are tested and validated on every pull request and deployed with Terraform on merge to `main`; website changes are synced to S3, and the CloudFront cache is invalidated when the `AWS_CLOUDFRONT_DISTRIBUTION_ID` secret is set.
+
+## Running the Tests
+
+The Lambda tests mock AWS, so they need no credentials:
+
+```bash
+pip install -r requirements.txt
+python -m unittest discover -s lambda-function -v
+```
 
 ## Resources and Documentation
 

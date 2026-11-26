@@ -1,11 +1,17 @@
 # Terraform Configuration for AWS Resources
 
-# Define the required provider and its version
+# Define the required providers and their versions
 terraform {
+  required_version = ">= 1.5"
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "> 5" # Use a version greater than 5
+      version = "~> 5.0" # Any 5.x release, but not a breaking 6.0
+    }
+    archive = {
+      source  = "hashicorp/archive"
+      version = "~> 2.4"
     }
   }
 }

@@ -19,27 +19,39 @@ resource "aws_iam_role" "lambda_exec" {
   })
 }
 
-# Attach policies to the Lambda execution role
+# Allow the function to write its logs to CloudWatch
 resource "aws_iam_role_policy_attachment" "lambda_policy_basic_execution" {
   role       = aws_iam_role.lambda_exec.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
-resource "aws_iam_role_policy_attachment" "lambda_policy_dynamodb_full_access" {
-  role       = aws_iam_role.lambda_exec.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"
+# Least privilege: the function only updates the counter item in its own table
+resource "aws_iam_role_policy" "lambda_dynamodb_counter" {
+  name = "visit-counter-dynamodb"
+  role = aws_iam_role.lambda_exec.id
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect   = "Allow",
+        Action   = ["dynamodb:UpdateItem"],
+        Resource = aws_dynamodb_table.dynamodb_table_cloud_resume.arn
+      }
+    ]
+  })
 }
 
-# Create a Lambda deployment package from source code
+# Package only the handler, not tests, caches or old build output
 data "archive_file" "lambda" {
   type        = "zip"
-  source_dir  = "../${path.module}/lambda-function" # Specify the source code dir
-  output_path = "../${path.module}/lambda-function/visit_counter.zip"
+  source_file = "${path.module}/../lambda-function/visit_counter.py"
+  output_path = "${path.module}/build/visit_counter.zip"
 }
 
 # Define the Lambda function
 resource "aws_lambda_function" "cloud_resume_function" {
-  filename      = "../${path.module}/lambda-function/visit_counter.zip" # Lambda deployment package
+  filename      = data.archive_file.lambda.output_path # Lambda deployment package
   function_name = "cloud-resume-function"
   role          = aws_iam_role.lambda_exec.arn   # IAM role for execution
   handler       = "visit_counter.lambda_handler" # Lambda handler function
@@ -47,6 +59,12 @@ resource "aws_lambda_function" "cloud_resume_function" {
   source_code_hash = data.archive_file.lambda.output_base64sha256
 
   runtime = "python3.11"
+
+  environment {
+    variables = {
+      TABLE_NAME = aws_dynamodb_table.dynamodb_table_cloud_resume.name
+    }
+  }
 }
 
 # Define a CloudWatch Log Group for Lambda function logs

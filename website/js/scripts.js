@@ -33,17 +33,6 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 
-// // JavaScript Counter
-// const counter = document.querySelector(".counter-number");
-// async function updateCounter() {
-//     let response = await fetch("https://o34ezkdwsb.execute-api.us-west-2.amazonaws.com/cloud-resume-challenge-function");
-//     let data = await response.json();
-//     counter.innerHTML = `${data}`;
-// }
-
-// updateCounter();
-
-
 // JavaScript Counter
 const counter = document.querySelector(".counter-number");
 async function updateCounter() {
