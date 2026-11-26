@@ -2,8 +2,8 @@
 **/.terraform/*
 
 # .tfstate files
-# *.tfstate
-# *.tfstate.*
+*.tfstate
+*.tfstate.*
 
 # Crash log files
 crash.log
@@ -35,3 +35,11 @@ terraform.rc
 
 terraform/S3-Bucket-State
 terraform/backend.tf
+
+# Terraform-generated Lambda package
+terraform/build/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
