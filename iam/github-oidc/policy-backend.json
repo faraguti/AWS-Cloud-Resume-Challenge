@@ -1,0 +1,158 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "TerraformStateObject",
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject"],
+      "Resource": "arn:aws:s3:::terraform-state-cloud-resume-faraguti/global/s3/terraform.tfstate*"
+    },
+    {
+      "Sid": "TerraformStateBucket",
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::terraform-state-cloud-resume-faraguti"
+    },
+    {
+      "Sid": "TerraformStateLock",
+      "Effect": "Allow",
+      "Action": ["dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:DeleteItem", "dynamodb:DescribeTable"],
+      "Resource": "arn:aws:dynamodb:us-west-2:287053549850:table/terraform-state-cloud-resume-faraguti"
+    },
+    {
+      "Sid": "ReadOnlyDescribe",
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:Describe*",
+        "dynamodb:List*",
+        "dynamodb:GetResourcePolicy",
+        "logs:DescribeLogGroups",
+        "logs:ListTagsForResource",
+        "logs:ListTagsLogGroup",
+        "cloudwatch:DescribeAlarms",
+        "cloudwatch:ListTagsForResource",
+        "lambda:GetAccountSettings",
+        "iam:ListPolicies",
+        "iam:GetPolicy",
+        "iam:GetPolicyVersion"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "CounterTable",
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:UpdateTable",
+        "dynamodb:UpdateContinuousBackups",
+        "dynamodb:UpdateTimeToLive",
+        "dynamodb:TagResource",
+        "dynamodb:UntagResource"
+      ],
+      "Resource": "arn:aws:dynamodb:us-west-2:287053549850:table/cloud-resume-challenge"
+    },
+    {
+      "Sid": "NeverDeleteCounterTable",
+      "Effect": "Deny",
+      "Action": "dynamodb:DeleteTable",
+      "Resource": "arn:aws:dynamodb:us-west-2:287053549850:table/cloud-resume-challenge"
+    },
+    {
+      "Sid": "VisitCounterFunction",
+      "Effect": "Allow",
+      "Action": "lambda:*",
+      "Resource": [
+        "arn:aws:lambda:us-west-2:287053549850:function:cloud-resume-function",
+        "arn:aws:lambda:us-west-2:287053549850:function:cloud-resume-function:*"
+      ]
+    },
+    {
+      "Sid": "LambdaExecRole",
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetRole",
+        "iam:UpdateRole",
+        "iam:UpdateAssumeRolePolicy",
+        "iam:TagRole",
+        "iam:UntagRole",
+        "iam:ListRoleTags",
+        "iam:ListRolePolicies",
+        "iam:GetRolePolicy",
+        "iam:PutRolePolicy",
+        "iam:DeleteRolePolicy",
+        "iam:ListAttachedRolePolicies",
+        "iam:ListInstanceProfilesForRole"
+      ],
+      "Resource": "arn:aws:iam::287053549850:role/lambda-exec-role"
+    },
+    {
+      "Sid": "LambdaExecRoleOnlyBasicLogging",
+      "Effect": "Allow",
+      "Action": ["iam:AttachRolePolicy", "iam:DetachRolePolicy"],
+      "Resource": "arn:aws:iam::287053549850:role/lambda-exec-role",
+      "Condition": {
+        "ArnEquals": {
+          "iam:PolicyARN": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+        }
+      }
+    },
+    {
+      "Sid": "PassLambdaExecRoleToLambdaOnly",
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": "arn:aws:iam::287053549850:role/lambda-exec-role",
+      "Condition": {
+        "StringEquals": {"iam:PassedToService": "lambda.amazonaws.com"}
+      }
+    },
+    {
+      "Sid": "CounterApi",
+      "Effect": "Allow",
+      "Action": ["apigateway:GET", "apigateway:POST", "apigateway:PUT", "apigateway:PATCH", "apigateway:DELETE"],
+      "Resource": [
+        "arn:aws:apigateway:us-west-2::/apis/ck0oj70heh",
+        "arn:aws:apigateway:us-west-2::/apis/ck0oj70heh/*",
+        "arn:aws:apigateway:us-west-2::/tags/*"
+      ]
+    },
+    {
+      "Sid": "ProjectLogGroups",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:DeleteLogGroup",
+        "logs:PutRetentionPolicy",
+        "logs:DeleteRetentionPolicy",
+        "logs:TagResource",
+        "logs:UntagResource",
+        "logs:TagLogGroup",
+        "logs:UntagLogGroup"
+      ],
+      "Resource": [
+        "arn:aws:logs:us-west-2:287053549850:log-group:/aws/lambda/cloud-resume-function",
+        "arn:aws:logs:us-west-2:287053549850:log-group:/aws/lambda/cloud-resume-function:*",
+        "arn:aws:logs:us-west-2:287053549850:log-group:/aws/api-gw/API-Gateway-Cloud-Resume",
+        "arn:aws:logs:us-west-2:287053549850:log-group:/aws/api-gw/API-Gateway-Cloud-Resume:*"
+      ]
+    },
+    {
+      "Sid": "ApiAccessLogDelivery",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogDelivery",
+        "logs:GetLogDelivery",
+        "logs:UpdateLogDelivery",
+        "logs:DeleteLogDelivery",
+        "logs:ListLogDeliveries",
+        "logs:PutResourcePolicy",
+        "logs:DescribeResourcePolicies"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "ErrorAlarm",
+      "Effect": "Allow",
+      "Action": ["cloudwatch:PutMetricAlarm", "cloudwatch:DeleteAlarms", "cloudwatch:TagResource", "cloudwatch:UntagResource"],
+      "Resource": "arn:aws:cloudwatch:us-west-2:287053549850:alarm:cloud-resume-function-errors"
+    }
+  ]
+}

@@ -40,6 +40,7 @@ This repository contains the code and resources for my personal AWS Cloud Resume
 - `terraform/`: Terraform for the backend (DynamoDB, Lambda, API Gateway). The S3, CloudFront, Certificate Manager and Route 53 hosting is managed outside this repository.
 - `website/`: Contains the HTML, CSS, and JavaScript files for the Cloud Resume website.
 - `README.md`: Detailed information about the project, setup, and usage.
+- `iam/github-oidc/`: Trust and permission policies for the two IAM roles GitHub Actions assumes through OIDC (no stored AWS keys). These roles are created outside Terraform so the pipeline cannot change its own permissions.
 - `.github/workflows/`: CI/CD. Backend changes are tested and validated on every pull request and deployed with Terraform on merge to `main`; website changes are synced to S3, and the CloudFront cache is invalidated when the `AWS_CLOUDFRONT_DISTRIBUTION_ID` secret is set.
 
 ## Running the Tests
