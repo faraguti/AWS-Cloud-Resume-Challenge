@@ -41,13 +41,14 @@ async function updateCounter() {
 
         if (response.ok) {
             const data = await response.json();
-            counter.innerHTML = `${data}`;
-        } else {
-            console.error("Failed to update counter:", response.statusText);
+            counter.textContent = Number.isFinite(data) ? data.toLocaleString("en-US") : "\u2014";
+            return;
         }
+        console.error("Failed to update counter:", response.status);
     } catch (error) {
         console.error("An error occurred:", error);
     }
+    counter.textContent = "\u2014"; // em dash instead of "Loading..." forever
 }
 
 updateCounter();
