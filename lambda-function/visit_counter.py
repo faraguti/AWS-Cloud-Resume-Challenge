@@ -11,8 +11,7 @@ TABLE_NAME = os.environ.get("TABLE_NAME", "cloud-resume-challenge")
 REGION = os.environ.get("AWS_REGION", "us-west-2")
 COUNTER_KEY = {"pk": "1", "sk": "1"}
 
-# Created on first use (not at import time) so tests can mock boto3, and
-# reused across warm Lambda invocations.
+# Reused across warm Lambda invocations.
 _table = None
 
 
@@ -21,6 +20,14 @@ def get_table():
     if _table is None:
         _table = boto3.resource("dynamodb", region_name=REGION).Table(TABLE_NAME)
     return _table
+
+
+# Inside Lambda, build the connection at import time. Lambda runs imports in
+# its init phase with full CPU; building it inside the first request instead
+# took ~2.8 s at 128 MB and hit the 3 s timeout. Outside Lambda (tests) it
+# stays lazy, so the tests can mock boto3 before anything is created.
+if os.environ.get("AWS_LAMBDA_FUNCTION_NAME"):
+    get_table()
 
 
 def lambda_handler(event, context):

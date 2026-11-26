@@ -62,6 +62,12 @@ resource "aws_lambda_function" "cloud_resume_function" {
   # runtime after the provider lock is upgraded.
   runtime = "python3.11"
 
+  # Lambda's CPU scales with memory; 128 MB (the default) is too slow for
+  # boto3. 10 s leaves headroom over the 3 s default so a slow cold start
+  # degrades instead of failing.
+  memory_size = 256
+  timeout     = 10
+
   environment {
     variables = {
       TABLE_NAME = aws_dynamodb_table.dynamodb_table_cloud_resume.name
@@ -74,4 +80,23 @@ resource "aws_cloudwatch_log_group" "log_group_lambda" {
   name = "/aws/lambda/${aws_lambda_function.cloud_resume_function.function_name}"
 
   retention_in_days = 14
+}
+
+# Flag any function error or timeout (visible in the CloudWatch console).
+# To get notified, add an SNS topic ARN to alarm_actions.
+resource "aws_cloudwatch_metric_alarm" "lambda_errors" {
+  alarm_name          = "${aws_lambda_function.cloud_resume_function.function_name}-errors"
+  alarm_description   = "Visit counter Lambda returned errors or timed out"
+  namespace           = "AWS/Lambda"
+  metric_name         = "Errors"
+  statistic           = "Sum"
+  period              = 300
+  evaluation_periods  = 1
+  threshold           = 1
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  treat_missing_data  = "notBreaching"
+
+  dimensions = {
+    FunctionName = aws_lambda_function.cloud_resume_function.function_name
+  }
 }
