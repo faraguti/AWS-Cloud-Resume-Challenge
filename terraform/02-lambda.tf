@@ -58,6 +58,8 @@ resource "aws_lambda_function" "cloud_resume_function" {
 
   source_code_hash = data.archive_file.lambda.output_base64sha256
 
+  # python3.12+ needs a newer AWS provider than the locked 5.14.0; bump the
+  # runtime after the provider lock is upgraded.
   runtime = "python3.11"
 
   environment {

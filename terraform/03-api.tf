@@ -6,7 +6,8 @@ resource "aws_apigatewayv2_api" "api_gateway_cloud_resume" {
   protocol_type = "HTTP"
 
   cors_configuration {
-    allow_origins = ["https://resume.faraguti.cloud", "https://resume.faraguti.com", "https://faraguti.com"]
+    allow_origins = ["https://faraguti.com", "https://resume.faraguti.com"]
+    allow_methods = ["GET"]
   }
 
   # Specify dependency on the Lambda function
@@ -57,6 +58,13 @@ resource "aws_apigatewayv2_stage" "api_stage" {
   api_id      = aws_apigatewayv2_api.api_gateway_cloud_resume.id
   name        = "$default"
   auto_deploy = true
+
+  # Cap request rates so the counter cannot be inflated quickly and
+  # Lambda/DynamoDB costs stay bounded. Excess requests get HTTP 429.
+  default_route_settings {
+    throttling_rate_limit  = 5  # steady-state requests per second
+    throttling_burst_limit = 10 # short bursts
+  }
 
   # Configure access log settings for the stage
   access_log_settings {
