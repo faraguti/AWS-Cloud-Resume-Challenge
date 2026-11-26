@@ -2,21 +2,22 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Felipe Faraguti, Cloud Engineer: resume and portfolio covering AWS, Azure, Terraform, CI/CD and DevOps." />
         <meta name="author" content="Felipe Faraguti" />
+        <meta property="og:type" content="website">
         <meta property="og:image" content="https://faraguti.com/assets/img/profile.jpg">
         <meta property="og:url" content="https://faraguti.com/">
         <meta property="og:title" content="Felipe Faraguti - Cloud Engineer Portfolio">
         <meta property="og:description" content="Resume and portfolio covering AWS, Azure, Terraform, CI/CD and DevOps.">
+        <meta name="twitter:card" content="summary">
         <link rel="canonical" href="https://faraguti.com/" />
         <title>Felipe Faraguti - Cloud Engineer Portfolio</title>
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Google fonts ("Muli" is now named "Mulish")-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,800;1,400;1,800&amp;family=Saira+Extra+Condensed:wght@500;700&amp;display=swap" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
         <style>
@@ -25,14 +26,44 @@
                 text-decoration: none; /* Remove underline style */
                 color: inherit; /* Use the same color as the parent element */
             }
-            </style>            
+            /* Inline SVG icons (replace the 1.4 MB Font Awesome script) */
+            .icon {
+                display: inline-block;
+                height: 1em;
+                width: auto;
+                overflow: visible;
+                vertical-align: -0.125em;
+                fill: currentColor;
+            }
+            .fa-ul {
+                list-style-type: none;
+                margin-left: 2.5em;
+                padding-left: 0;
+            }
+            .fa-ul > li {
+                position: relative;
+            }
+            .fa-li {
+                position: absolute;
+                left: -2em;
+                width: 2em;
+                text-align: center;
+                line-height: inherit;
+            }
+            /* Mobile name in the top bar: bold so it meets contrast for large text */
+            #sideNav .navbar-brand .d-lg-none {
+                font-weight: 700;
+            }
+        </style>
     </head>
     <body id="page-top">
+        <!-- Icons: Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License: https://fontawesome.com/license/free (Icons: CC BY 4.0) -->
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><symbol id="i-award" viewBox="0 0 384 512"><path d="M173.8 5.5c11-7.3 25.4-7.3 36.4 0L228 17.2c6 3.9 13 5.8 20.1 5.4l21.3-1.3c13.2-.8 25.6 6.4 31.5 18.2l9.6 19.1c3.2 6.4 8.4 11.5 14.7 14.7L344.5 83c11.8 5.9 19 18.3 18.2 31.5l-1.3 21.3c-.4 7.1 1.5 14.2 5.4 20.1l11.8 17.8c7.3 11 7.3 25.4 0 36.4L366.8 228c-3.9 6-5.8 13-5.4 20.1l1.3 21.3c.8 13.2-6.4 25.6-18.2 31.5l-19.1 9.6c-6.4 3.2-11.5 8.4-14.7 14.7L301 344.5c-5.9 11.8-18.3 19-31.5 18.2l-21.3-1.3c-7.1-.4-14.2 1.5-20.1 5.4l-17.8 11.8c-11 7.3-25.4 7.3-36.4 0L156 366.8c-6-3.9-13-5.8-20.1-5.4l-21.3 1.3c-13.2 .8-25.6-6.4-31.5-18.2l-9.6-19.1c-3.2-6.4-8.4-11.5-14.7-14.7L39.5 301c-11.8-5.9-19-18.3-18.2-31.5l1.3-21.3c.4-7.1-1.5-14.2-5.4-20.1L5.5 210.2c-7.3-11-7.3-25.4 0-36.4L17.2 156c3.9-6 5.8-13 5.4-20.1l-1.3-21.3c-.8-13.2 6.4-25.6 18.2-31.5l19.1-9.6C65 70.2 70.2 65 73.4 58.6L83 39.5c5.9-11.8 18.3-19 31.5-18.2l21.3 1.3c7.1 .4 14.2-1.5 20.1-5.4L173.8 5.5zM272 192a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM1.3 441.8L44.4 339.3c.2 .1 .3 .2 .4 .4l9.6 19.1c11.7 23.2 36 37.3 62 35.8l21.3-1.3c.2 0 .5 0 .7 .2l17.8 11.8c5.1 3.3 10.5 5.9 16.1 7.7l-37.6 89.3c-2.3 5.5-7.4 9.2-13.3 9.7s-11.6-2.2-14.8-7.2L74.4 455.5l-56.1 8.3c-5.7 .8-11.4-1.5-15-6s-4.3-10.7-2.1-16zm248 60.4L211.7 413c5.6-1.8 11-4.3 16.1-7.7l17.8-11.8c.2-.1 .4-.2 .7-.2l21.3 1.3c26 1.5 50.3-12.6 62-35.8l9.6-19.1c.1-.2 .2-.3 .4-.4l43.2 102.5c2.2 5.3 1.4 11.4-2.1 16s-9.3 6.9-15 6l-56.1-8.3-32.2 49.2c-3.2 5-8.9 7.7-14.8 7.2s-11-4.3-13.3-9.7z"/></symbol><symbol id="i-book-open" viewBox="0 0 576 512"><path d="M249.6 471.5c10.8 3.8 22.4-4.1 22.4-15.5l0-377.4c0-4.2-1.6-8.4-5-11C247.4 52 202.4 32 144 32C93.5 32 46.3 45.3 18.1 56.1C6.8 60.5 0 71.7 0 83.8L0 454.1c0 11.9 12.8 20.2 24.1 16.5C55.6 460.1 105.5 448 144 448c33.9 0 79 14 105.6 23.5zm76.8 0C353 462 398.1 448 432 448c38.5 0 88.4 12.1 119.9 22.6c11.3 3.8 24.1-4.6 24.1-16.5l0-370.3c0-12.1-6.8-23.3-18.1-27.6C529.7 45.3 482.5 32 432 32c-58.4 0-103.4 20-123 35.6c-3.3 2.6-5 6.8-5 11L304 456c0 11.4 11.7 19.3 22.4 15.5z"/></symbol><symbol id="i-briefcase" viewBox="0 0 512 512"><path d="M184 48l144 0c4.4 0 8 3.6 8 8l0 40L176 96l0-40c0-4.4 3.6-8 8-8zm-56 8l0 40L64 96C28.7 96 0 124.7 0 160l0 96 192 0 128 0 192 0 0-96c0-35.3-28.7-64-64-64l-64 0 0-40c0-30.9-25.1-56-56-56L184 0c-30.9 0-56 25.1-56 56zM512 288l-192 0 0 32c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32l0-32L0 288 0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-128z"/></symbol><symbol id="i-certificate" viewBox="0 0 512 512"><path d="M211 7.3C205 1 196-1.4 187.6 .8s-14.9 8.9-17.1 17.3L154.7 80.6l-62-17.5c-8.4-2.4-17.4 0-23.5 6.1s-8.5 15.1-6.1 23.5l17.5 62L18.1 170.6c-8.4 2.1-15 8.7-17.3 17.1S1 205 7.3 211l46.2 45L7.3 301C1 307-1.4 316 .8 324.4s8.9 14.9 17.3 17.1l62.5 15.8-17.5 62c-2.4 8.4 0 17.4 6.1 23.5s15.1 8.5 23.5 6.1l62-17.5 15.8 62.5c2.1 8.4 8.7 15 17.1 17.3s17.3-.2 23.4-6.4l45-46.2 45 46.2c6.1 6.2 15 8.7 23.4 6.4s14.9-8.9 17.1-17.3l15.8-62.5 62 17.5c8.4 2.4 17.4 0 23.5-6.1s8.5-15.1 6.1-23.5l-17.5-62 62.5-15.8c8.4-2.1 15-8.7 17.3-17.1s-.2-17.4-6.4-23.4l-46.2-45 46.2-45c6.2-6.1 8.7-15 6.4-23.4s-8.9-14.9-17.3-17.1l-62.5-15.8 17.5-62c2.4-8.4 0-17.4-6.1-23.5s-15.1-8.5-23.5-6.1l-62 17.5L341.4 18.1c-2.1-8.4-8.7-15-17.1-17.3S307 1 301 7.3L256 53.5 211 7.3z"/></symbol><symbol id="i-check" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></symbol><symbol id="i-code" viewBox="0 0 640 512"><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/></symbol><symbol id="i-github" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></symbol><symbol id="i-graduation-cap" viewBox="0 0 640 512"><path d="M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.9 20.9C57.3 229.3 48 259.8 48 291.9l0 28.1c0 28.4-10.8 57.7-22.3 80.8c-6.5 13-13.9 25.8-22.5 37.6C0 442.7-.9 448.3 .9 453.4s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7 .3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7C90.3 344.3 86 329.8 80 316.5l0-24.6c0-30.2 10.2-58.7 27.9-81.5c12.9-15.5 29.6-28 49.2-35.7l157-61.7c8.2-3.2 17.5 .8 20.7 9s-.8 17.5-9 20.7l-157 61.7c-12.4 4.9-23.3 12.4-32.2 21.6l159.6 57.6c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1L624.2 182.6c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1C336.1 33.4 328.1 32 320 32zM128 408c0 35.3 86 72 192 72s192-36.7 192-72L496.7 262.6 354.5 314c-11.1 4-22.8 6-34.5 6s-23.5-2-34.5-6L143.3 262.6 128 408z"/></symbol><symbol id="i-handshake" viewBox="0 0 640 512"><path d="M323.4 85.2l-96.8 78.4c-16.1 13-19.2 36.4-7 53.1c12.9 17.8 38 21.3 55.3 7.8l99.3-77.2c7-5.4 17-4.2 22.5 2.8s4.2 17-2.8 22.5l-20.9 16.2L512 316.8 512 128l-.7 0-3.9-2.5L434.8 79c-15.3-9.8-33.2-15-51.4-15c-21.8 0-43 7.5-60 21.2zm22.8 124.4l-51.7 40.2C263 274.4 217.3 268 193.7 235.6c-22.2-30.5-16.6-73.1 12.7-96.8l83.2-67.3c-11.6-4.9-24.1-7.4-36.8-7.4C234 64 215.7 69.6 200 80l-72 48 0 224 28.2 0 91.4 83.4c19.6 17.9 49.9 16.5 67.8-3.1c5.5-6.1 9.2-13.2 11.1-20.6l17 15.6c19.5 17.9 49.9 16.6 67.8-2.9c4.5-4.9 7.8-10.6 9.9-16.5c19.4 13 45.8 10.3 62.1-7.5c17.9-19.5 16.6-49.9-2.9-67.8l-134.2-123zM16 128c-8.8 0-16 7.2-16 16L0 352c0 17.7 14.3 32 32 32l32 0c17.7 0 32-14.3 32-32l0-224-80 0zM48 320a16 16 0 1 1 0 32 16 16 0 1 1 0-32zM544 128l0 224c0 17.7 14.3 32 32 32l32 0c17.7 0 32-14.3 32-32l0-208c0-8.8-7.2-16-16-16l-80 0zm32 208a16 16 0 1 1 32 0 16 16 0 1 1 -32 0z"/></symbol><symbol id="i-linkedin-in" viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></symbol><symbol id="i-users" viewBox="0 0 640 512"><path d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192l42.7 0c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0L21.3 320C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7l42.7 0C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3l-213.3 0zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352l117.3 0C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7l-330.7 0c-14.7 0-26.7-11.9-26.7-26.7z"/></symbol></svg>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
                 <span class="d-block d-lg-none">Felipe Faraguti</span>
-                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.jpg" alt="..." /></span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.webp" width="320" height="320" alt="Felipe Faraguti" /></span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -43,20 +74,20 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#affiliations">Affiliations</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Certifications</a></li>
                     <!-- Visitor Counter -->
                     <li class="nav-item">
                         <hr class="my-1"> <!-- Divider -->
                         <span class="nav-link">
-                            <i class="fas fa-users"></i> <!-- Icon for the counter -->
-                            <strong style="font-size: 1em;">Visits:</strong> <span class="counter-number not-a-link" style="font-size: 1.2em;">Loading...</span>
+                            <svg class="icon" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><use href="#i-users"></use></svg> <!-- Icon for the counter -->
+                            <strong style="font-size: 1em;">Visits:</strong> <span class="counter-number not-a-link" style="font-size: 1.2em;" aria-live="polite">Loading...</span>
                         </span>
                     </li>
                 </ul>
             </div>
         </nav>
         <!-- Page Content-->
-        <div class="container-fluid p-0">
+        <main class="container-fluid p-0">
             <!-- About-->
             <section class="resume-section" id="about">
                 <div class="resume-section-content">
@@ -71,8 +102,8 @@
                     <p class="lead mb-5">
                         Tech enthusiast and recent graduate with a B.S. in Computer Information Technology. Specialized in AWS and Azure Cloud Computing, Database Management, and DevOps. Eager to contribute to innovative projects. Let's connect and explore tech's endless possibilities!</p>
                     <div class="social-icons">
-                        <a class="social-icon" href="https://www.linkedin.com/in/felipe-faraguti/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-icon" href="https://github.com/faraguti" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a class="social-icon" href="https://www.linkedin.com/in/felipe-faraguti/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#i-linkedin-in"></use></svg></a>
+                        <a class="social-icon" href="https://github.com/faraguti" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon" viewBox="0 0 496 512" aria-hidden="true" focusable="false"><use href="#i-github"></use></svg></a>
                     </div>
                 </div>
             </section>
@@ -81,7 +112,7 @@
 
             <section class="resume-section" id="experience">
                 <div class="resume-section-content">
-                    <h2 class="mb-5" style="color: #FAF9F6;"><i class="fas fa-briefcase" style="color: #FAF9F6;"></i> Experience</h2>
+                    <h2 class="mb-5" style="color: #FAF9F6;"><svg class="icon" style="color: #FAF9F6;" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#i-briefcase"></use></svg> Experience</h2>
 
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
@@ -117,7 +148,7 @@
             <!-- Education-->
             <section class="resume-section" id="education">
                 <div class="resume-section-content">
-                    <h2 class="mb-5"><i class="fas fa-graduation-cap"></i>  Education</h2>
+                    <h2 class="mb-5"><svg class="icon" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><use href="#i-graduation-cap"></use></svg>  Education</h2>
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="flex-grow-1">
                         <h3 class="mb-0">Brigham Young University - Idaho</h3>
@@ -136,79 +167,79 @@
             <!-- Skills-->
             <section class="resume-section" id="skills">
                 <div class="resume-section-content">
-                    <h2 class="mb-5"><i class="fas fa-book-open"></i>  Skills</h2>
+                    <h2 class="mb-5"><svg class="icon" viewBox="0 0 576 512" aria-hidden="true" focusable="false"><use href="#i-book-open"></use></svg>  Skills</h2>
                     <div class="subheading mb-3">Cloud Platforms</div>
                     <ul class="fa-ul mb-4">
                         <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <span class="fa-li"><svg class="icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
                             Amazon Web Services (AWS)
                         </li>
                         <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <span class="fa-li"><svg class="icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
                             Microsoft Azure
                         </li>
                         <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <span class="fa-li"><svg class="icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
                             Google Cloud Platform (GCP)
                         </li>
                     </ul>
                     <div class="subheading mb-3">DevOps</div>
                     <ul class="fa-ul">
                         <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <span class="fa-li"><svg class="icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
                             Docker
                         </li>
                         <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <span class="fa-li"><svg class="icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
                             Kubernetes
                         </li>
                         <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <span class="fa-li"><svg class="icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
                             Jenkins
                         </li>
                         <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <span class="fa-li"><svg class="icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
                             Ansible
                         </li>
                         <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <span class="fa-li"><svg class="icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
                             Terraform
                         </li>
                         <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <span class="fa-li"><svg class="icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
                             Git
                         </li>
                     </ul>
                     <div class="subheading mb-3">Programming Languages</div>
                     <ul class="fa-ul">
                         <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <span class="fa-li"><svg class="icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
                             Python
                         </li>
                     </ul>
                     <div class="subheading mb-3">Operating Systems & Scripting</div>
                     <ul class="fa-ul">
                         <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <span class="fa-li"><svg class="icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
                             Linux and Windows
                         </li>
                         <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <span class="fa-li"><svg class="icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
                             PowerShell and Bash
                         </li>
                     </ul>     
                     <div class="subheading mb-3">Database Management</div>
                     <ul class="fa-ul">
                         <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <span class="fa-li"><svg class="icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
                             SQL Server
                         </li>
                         <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <span class="fa-li"><svg class="icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
                             MySQL
                         </li>
                         <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            <span class="fa-li"><svg class="icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
                             PostgreSQL
                         </li>
                     </ul>
@@ -218,16 +249,16 @@
             <!-- Projects -->
             <section class="resume-section" id="projects">
                 <div class="resume-section-content">
-                    <h2 class="mb-5"><i class="fas fa-code"></i> Projects</h2>
+                    <h2 class="mb-5"><svg class="icon" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg> Projects</h2>
                     
                     <div class="mb-5">
                         <h3>AWS Project - The Cloud Resume Challenge</h3>
                         <p>
-                            Deployed this personal resume website using S3, CloudFront, Certificate Manager, Route 53, DynamoDB, Lambda, API Gateway,
-                            Managed backend and frontend with Terraform and CI/CD through GitHub Actions.
+                            Deployed this personal resume website using S3, CloudFront, Certificate Manager, Route 53, DynamoDB, Lambda and API Gateway.
+                            Managed the backend and frontend with Terraform and CI/CD through GitHub Actions.
                         </p>
                         <a href="https://github.com/faraguti/AWS-Cloud-Resume-Challenge" target="_blank" rel="noopener noreferrer">
-                            <img src="https://user-images.githubusercontent.com/5418256/263553303-5674900e-c499-4223-be20-fd219b8ed815.png" alt="Cloud Resume Challenge" class="img-fluid" style="width: 60%;">
+                            <img src="assets/img/cloud-resume-challenge.webp" width="1107" height="469" loading="lazy" alt="Cloud Resume Challenge architecture diagram" class="img-fluid" style="width: 60%;">
                         </a>
                     </div>
                     <div>
@@ -235,7 +266,7 @@
                         <p>
                             Deployed and hosted a highly-available WordPress application using EC2, RDS, Route 53, ASG and VPC (3 Tier).
                         </p>
-                        <img src="assets/img/wordpress.drawio.png" alt="WordPress" class="img-fluid" style="width: 60%;">
+                        <img src="assets/img/wordpress.webp" width="1101" height="851" loading="lazy" alt="WordPress on AWS architecture diagram" class="img-fluid" style="width: 60%;">
                     </div>
                     <div class="mt-4">
                         <p style="font-size: 18px; color: #FAF9F6;">
@@ -247,10 +278,11 @@
                     </div>                
                 </div>
             </section>
+            <hr class="m-0" />
             <!-- Organizational Involvement -->
             <section class="resume-section" id="affiliations">
                 <div class="resume-section-content">
-                    <h2 class="mb-5"><i class="fa-solid fa-handshake"></i>  Affiliations</h2>
+                    <h2 class="mb-5"><svg class="icon" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><use href="#i-handshake"></use></svg>  Affiliations</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
                             <h3 class="mb-0">SHPE - BYU-Idaho Chapter</h3>
@@ -269,35 +301,34 @@
                     </div>                    
                 </div>
             </section>
-<hr class="m-0" />
-
+            <hr class="m-0" />
             <!-- Awards & Certifications -->
             <section class="resume-section" id="awards">
                 <div class="resume-section-content">
-                    <h2 class="mb-5"><i class="fas fa-award"></i>  Certifications</h2>
+                    <h2 class="mb-5"><svg class="icon" viewBox="0 0 384 512" aria-hidden="true" focusable="false"><use href="#i-award"></use></svg>  Certifications</h2>
                     <ul class="fa-ul mb-0">
                         <li>
-                            <span class="fa-li"><i class="fas fa-certificate text-warning"></i></span>
+                            <span class="fa-li"><svg class="icon text-warning" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#i-certificate"></use></svg></span>
                             AWS Certified Cloud Practitioner (12/2022 - 12/2025)
                         </li>
                         <li>
-                            <span class="fa-li"><i class="fas fa-certificate text-warning"></i></span>
+                            <span class="fa-li"><svg class="icon text-warning" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#i-certificate"></use></svg></span>
                             Microsoft Certified: Azure Fundamentals (05/2023 - Present)
                         </li>
                         <li>
-                            <span class="fa-li"><i class="fas fa-certificate text-warning"></i></span>
+                            <span class="fa-li"><svg class="icon text-warning" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#i-certificate"></use></svg></span>
                             Microsoft Certified: Azure Data Fundamentals (06/2023 - Present)
                         </li>
                         <li>
-                            <span class="fa-li"><i class="fas fa-certificate text-warning"></i></span>
+                            <span class="fa-li"><svg class="icon text-warning" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#i-certificate"></use></svg></span>
                             TestOut Network Pro Certification (04/2023 - Present)
                         </li>
                     </ul>
                 </div>
             </section>
-        </div>
+        </main>
         <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
     </body>
