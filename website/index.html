@@ -50,9 +50,10 @@
                 text-align: center;
                 line-height: inherit;
             }
-            /* Mobile name in the top bar: bold so it meets contrast for large text */
-            #sideNav .navbar-brand .d-lg-none {
-                font-weight: 700;
+            /* Sidebar / mobile top bar: slightly darker blue so white text meets
+               WCAG AA contrast (4.95:1; #0083ff was 3.69:1) */
+            #sideNav.bg-primary {
+                background-color: #006fd6 !important;
             }
         </style>
     </head>
@@ -96,7 +97,7 @@
                         <span style="color: #0083ff;">Faraguti</span>
                     </h1>
                     <div class="subheading mb-5">
-                        Rexburg, ID 83440 · (385) 301-6515 ·
+                        Post Falls, ID · (385) 301-6515 ·
                         <a href="mailto:faraguti@gmail.com">faraguti@gmail.com</a>
                     </div>
                     <p class="lead mb-5">
