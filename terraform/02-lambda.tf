@@ -58,9 +58,7 @@ resource "aws_lambda_function" "cloud_resume_function" {
 
   source_code_hash = data.archive_file.lambda.output_base64sha256
 
-  # python3.12+ needs a newer AWS provider than the locked 5.14.0; bump the
-  # runtime after the provider lock is upgraded.
-  runtime = "python3.11"
+  runtime = "python3.13"
 
   # Lambda's CPU scales with memory; 128 MB (the default) is too slow for
   # boto3. 10 s leaves headroom over the 3 s default so a slow cold start
